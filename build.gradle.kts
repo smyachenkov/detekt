@@ -20,7 +20,7 @@ plugins {
 }
 
 tasks.withType<Wrapper> {
-	gradleVersion = "5.0"
+	gradleVersion = "5.1"
 	distributionType = Wrapper.DistributionType.ALL
 	doLast {
 		/*
@@ -182,7 +182,7 @@ subprojects {
 		})
 	}
 
-	tasks.withType(DokkaTask::class.java) {
+	tasks.withType<DokkaTask> {
 		// suppresses undocumented classes but not dokka warnings
 		// https://github.com/Kotlin/dokka/issues/229 && https://github.com/Kotlin/dokka/issues/319
 		reportUndocumented = false
@@ -195,19 +195,19 @@ subprojects {
 
 	val sourcesJar by tasks.creating(Jar::class) {
 		dependsOn("classes")
-		classifier = "sources"
+		archiveClassifier.set("sources")
 		from(sourceSets["main"].allSource)
 	}
 
 	val javadocJar by tasks.creating(Jar::class) {
 		dependsOn("dokka")
-		classifier = "javadoc"
+		archiveClassifier.set("javadoc")
 		from(buildDir.resolve("javadoc"))
 	}
 
 	artifacts {
-		add("archives", sourcesJar)
-		add("archives", javadocJar)
+		archives(sourcesJar)
+		archives(javadocJar)
 	}
 
 	configure<PublishingExtension> {
