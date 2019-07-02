@@ -1,3 +1,9 @@
 codecov:
   ci:
     - !appveyor
+coverage:
+  status:
+    # pull-requests only
+    patch:
+      default:
+        threshold: 0.1%
