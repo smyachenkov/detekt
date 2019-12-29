@@ -448,6 +448,8 @@ style:
     active: false
   ExplicitItLambdaParameter:
     active: false
+  ExplicitMapElementAccessMethod:
+    active: false
   ExpressionBodySyntax:
     active: false
     includeLineWrapping: false

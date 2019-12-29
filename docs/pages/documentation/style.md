@@ -186,6 +186,30 @@ collection.zipWithNext { prev, next ->
 }
 ```
 
+### ExplicitMapElementAccessMethod
+
+Prefer usage of indexed access operator [] for map element access or insert methods.
+
+**Severity**: Style
+
+**Debt**: 5min
+
+#### Noncompliant Code:
+
+```kotlin
+val map = Map<String, String>()
+map.put("key", "value")
+val value = map.get("key")
+```
+
+#### Compliant Code:
+
+```kotlin
+val map = Map<String, String>()
+map["key"] = "value"
+map["key"]
+```
+
 ### ExpressionBodySyntax
 
 Functions which only contain a `return` statement can be collapsed to an expression body. This shortens and
